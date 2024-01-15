@@ -1,2 +1,1 @@
 - Initializing PostgreSQL on Docker
-- Testing from terminal
