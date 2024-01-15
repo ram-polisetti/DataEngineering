@@ -12,3 +12,10 @@
     - --entrypoint -> what exactly is executed first when we run the container 
       - it lets you install packages or libraries inside the container 
       - just enter python in the terminal after installing the packages
+  
+
+  # Creating Docker
+  - docker build -t test:pandas . 
+    - -t test:pandas -> image name
+    - . -> docker looks for Dockerfile in the current directory
+  
