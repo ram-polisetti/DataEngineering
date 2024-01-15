@@ -10,3 +10,5 @@
  ### Another  Example
  - docker run -it --entrypoint=bash python:3.9
     - --entrypoint -> what exactly is executed first when we run the container 
+      - it lets you install packages or libraries inside the container 
+      - just enter python in the terminal after installing the packages
