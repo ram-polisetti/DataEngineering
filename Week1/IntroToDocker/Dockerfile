@@ -1,6 +1,8 @@
 FROM  python:3.9
-# COPY . /app
-# WORKDIR /app
 RUN pip install pandas numpy
+
+WORKDIR /app
+COPY pipeline.py pipeline.py
+
 ENTRYPOINT ["bash"]
 # CMD ["app.py"]
