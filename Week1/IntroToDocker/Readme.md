@@ -19,3 +19,4 @@
     - -t test:pandas -> image name
     - . -> docker looks for Dockerfile in the current directory
   
+  - docker run -it test:pandas 2024-01-15
