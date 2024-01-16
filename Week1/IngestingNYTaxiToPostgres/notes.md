@@ -72,3 +72,8 @@ docker run -it \
     -p 8080:80 \
     dpage/pgadmin
 ```
+
+- Doing this eventually fails cause postgredb and pgadmin are in different networks and they cant communicate with each other
+
+## Creating Network 
+- 
