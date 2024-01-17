@@ -1,6 +1,6 @@
 # Postgres DB Docker image creation
 
-```docker
+```bash
 services:
 postgres:
 image: postgres:13 environment:
@@ -18,7 +18,7 @@ restart: always
 
 - Docker image for Postgres DB
 
-```docker
+```bash
 docker run -it \
     -e POSTGRES_USER="root" \
     -e POSTGRES_PASSWORD="root" \
@@ -28,16 +28,19 @@ docker run -it \
     postgres:13
 ```
 
-```$ pgcli -h localhost -p 5432 -u root -d ny_taxi```
+```bash
+pgcli -h localhost -p 5432 -u root -d ny_taxi
+```
 
 ![Alt text](image.png)
 
 - Extract a .gz file
 
-``` gunzip yellow_tripdata_2019-01.csv.gz ```
+```bash
+gunzip yellow_tripdata_2019-01.csv.gz 
+```
 
 - Connecting to Postgres DB from jupyter
-
 
 ```python
 from sqlalchemy import create_engine
@@ -61,11 +64,11 @@ engine.connect()
 
 ## Setting up Pgadmin Using Docker
 
-```docker
+```bash
 docker pull dpage/pgadmin4
 ```
 
-```docker   
+```bash
 
 docker run -it \
     -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \
@@ -78,12 +81,13 @@ docker run -it \
 
 ## Creating Network 
 
-```docker
+```bash
 docker network create pg-network
 ```
 
 - postgresdb
-```docker
+
+```bash
 docker run -it \
     -e POSTGRES_USER="root" \
     -e POSTGRES_PASSWORD="root" \
@@ -98,10 +102,11 @@ docker run -it \
 - --network -> assign the network name to this variable
 - --name -> how the pgadmin is going to discover postgres db
 
+Accessing PostgreSQL from PgAdmin
 
-- Now we have to run pg-admin in the same network 
+- Now we have to run pg-admin in the same network
 
-```docker   
+```bash
 
 docker run -it \
     -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \

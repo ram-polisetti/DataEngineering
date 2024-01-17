@@ -1,6 +1,5 @@
 
-- Connecting to Postgres DB from jupyter
-
+# Connecting to Postgres DB from jupyter
 
 ```python
 from sqlalchemy import create_engine
@@ -24,11 +23,11 @@ engine.connect()
 
 ## Setting up Pgadmin Using Docker
 
-```docker
+```bash
 docker pull dpage/pgadmin4
 ```
 
-```docker   
+```bash   
 
 docker run -it \
     -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \
@@ -41,12 +40,13 @@ docker run -it \
 
 ## Creating Network 
 
-```docker
+```bash
 docker network create pg-network
 ```
 
 - postgresdb
-```docker
+
+```bash
 docker run -it \
     -e POSTGRES_USER="root" \
     -e POSTGRES_PASSWORD="root" \
@@ -61,10 +61,10 @@ docker run -it \
 - --network -> assign the network name to this variable
 - --name -> how the pgadmin is going to discover postgres db
 
-
+Accessing Postgres DB from PgAdmin: http://localhost:8080
 - Now we have to run pg-admin in the same network 
 
-```docker   
+```bash
 
 docker run -it \
     -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \
@@ -88,8 +88,9 @@ docker run -it \
 
 ## Python ingestion for dockerfile
 
-```docker
 URL = "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2023-10.parquet"
+
+```python
 python upload_data.py \
 --user=root \
 --password=root \
@@ -101,8 +102,32 @@ python upload_data.py \
 
 ```
 
-- Reusing a already existed container
+## Reusing a already existed container
 
-```docker
+```bash
  docker start pg-database
  ```
+
+```bash
+docker start pgadmin
+```
+
+## Creating a docker image for entire pipeline to ingest data 
+
+Create Docker file in project directory: `Dockerfile`
+Add following content into Docker file:
+
+```docker
+FROM  python:3.9
+RUN apt-get install wget
+RUN pip install sqlalchemy pandas numpy psycopg2 pyarrow time
+WORKDIR /app
+COPY upload_data.py upload_data.py
+ENTRYPOINT ["python", "upload_data.py"]
+```
+
+Build the docker image using command :
+
+```bash
+docker build -t taxi_ingest:v0
+```
