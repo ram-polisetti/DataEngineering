@@ -45,3 +45,17 @@ services:
 ```bash
 docker-compose up
 ```
+
+Running in Detached mode
+
+```bash
+docker-compose up -d 
+```
+
+![Alt text](image.png)
+
+Shutting down docker-compose
+
+```bash
+docker-compose down
+```
