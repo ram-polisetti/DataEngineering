@@ -71,7 +71,7 @@ docker run -it \
     -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \
     -e PGADMIN_DEFAULT_PASSWORD="root" \
     -p 8080:80 \
-    dpage/pgadmin
+    dpage/pgadmin4
 ```
 
 - Doing this eventually fails cause postgredb and pgadmin are in different networks and they cant communicate with each other
@@ -109,7 +109,14 @@ docker run -it \
     -p 8080:80 \
     --network=pg-network \
     --name=pgadmin \ 
-    dpage/pgadmin
+    dpage/pgadmin4
 ```
 
-- here the name is not important because we are not connecting any container to pgadmin whereas we need connection to postgresdb to access the data 
+- here the name is not important because we are not connecting any container to pgadmin whereas we need connection to postgresdb to access the data.
+- Login using credentials "admin@admin.com" and "root"
+  - Right click on servers 
+  - create new server
+  - hostname -> pg-database
+  - username -> root
+  - password -> root
+- Then go to databases and inspect the ny_taxi database
