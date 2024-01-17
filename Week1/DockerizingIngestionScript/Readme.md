@@ -102,7 +102,7 @@ python upload_data.py \
 
 ```
 
-## Reusing a already existed container
+## Reusing an already existing container
 
 ```bash
  docker start pg-database
