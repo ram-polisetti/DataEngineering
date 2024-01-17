@@ -41,3 +41,7 @@ services:
 ```
 
 - No need to specify the network interface. It will happen automatically.
+
+```bash
+docker-compose up
+```
