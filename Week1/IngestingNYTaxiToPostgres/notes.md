@@ -120,3 +120,4 @@ docker run -it \
   - username -> root
   - password -> root
 - Then go to databases and inspect the ny_taxi database
+![Alt text](image-4.png)
