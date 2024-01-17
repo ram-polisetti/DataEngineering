@@ -71,7 +71,7 @@ if __name__ == "__main__":
     parser.add_argument('--port', type=str, default='5432', help='port')
     parser.add_argument('--database', type=str, default='ny_taxi', help='database name')
     parser.add_argument('--table', type=str, default='yellow_taxi_data', help='name of the table where we will write the results')
-    parser.add_argument('--url', type=str, default='Yellow Taxi 2019 Jan.csv', help='url of csv')
+    parser.add_argument('--url', type=str, default='https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2023-10.parquet', help='url of parquet file')
     
     args = parser.parse_args()
     # print(args.accumulate(args.integers))

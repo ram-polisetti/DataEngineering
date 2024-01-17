@@ -131,3 +131,23 @@ Build the docker image using command :
 ```bash
 docker build -t taxi_ingest:v001 .
 ```
+
+Run the docker image with required arguments as mentioned above
+
+```bash
+docker run -it --network=pg-network taxi_ingest:v001 \
+--user=root \
+--password=root \
+--host=pg-database \
+--port=5432 \
+--database=ny_taxi \
+--table=yellow_taxi_data \
+--url="https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2023-10.parquet"
+
+```
+
+### Output
+
+![Alt text](image-5.png)
+
+![Alt text](image-6.png)
