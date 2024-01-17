@@ -89,10 +89,13 @@ docker run -it \
 ## Python ingestion for dockerfile
 
 ```docker
+URL = 
 python upload_data.py \
 --user=root \
 --password=root \
 --host=localhost \
 --port=5432 \
---dbname=ny_taxi
+--dbname=ny_taxi \
+--table=yellow_taxi_data \
+--url=${URL} \
 ```
