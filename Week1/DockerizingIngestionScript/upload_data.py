@@ -46,7 +46,7 @@ def main(params):
             df["tpep_dropoff_datetime"] = pd.to_datetime(df["tpep_dropoff_datetime"])
             df.to_sql(name=table, con=connection, if_exists='append')
             t_end = time()
-            print(f'Inserted Chunk {i}, time taken- {t_start-t_end}')
+            print(f'Inserted Chunk {i}, time taken- {t_end-t_start}')
             i+=1
         
     print('Finished Ingesting data')
