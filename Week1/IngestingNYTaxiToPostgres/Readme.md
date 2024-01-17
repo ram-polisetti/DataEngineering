@@ -1,5 +1,11 @@
 # Postgres DB Docker image creation
 
+Change folder permissions to read write
+
+```bash
+sudo chmod -R 755 ny_taxi_postgres_data/
+```
+
 ```bash
 services:
 postgres:
