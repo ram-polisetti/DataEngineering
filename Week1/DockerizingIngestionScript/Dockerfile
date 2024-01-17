@@ -1,5 +1,5 @@
 FROM  python:3.9
-RUN pip install sqlalchemy pandas numpy
+RUN pip install sqlalchemy pandas numpy psycopg2
 
 WORKDIR /app
 COPY pipeline.py pipeline.py
