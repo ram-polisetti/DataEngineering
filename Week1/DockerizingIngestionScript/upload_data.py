@@ -5,9 +5,7 @@ from sqlalchemy import create_engine
 import argparse
 import os
 import pyarrow.parquet as pq
-
-
-
+from time import time
 
 
 def main(params):
@@ -27,28 +25,30 @@ def main(params):
     parquet_name = 'output.parquet'  # Change file extension to .parquet
     os.system(f'wget {url} -O {parquet_name}')  # Downloading the Parquet file
     
-    
     # engine = create_engine('postgresql://root:root@localhost:5432/ny_taxi')
     engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{database}')
-    engine.connect()
+    with engine.connect() as connection:
     
-    
-    parquet_file = pq.ParquetFile(csv_name)
-    schema = parquet_file.schema
+        parquet_file = pq.ParquetFile(parquet_name)
+        schema = parquet_file.schema
 
-    # Extract and print column names
-    column_names = schema.names
-    # Create an empty DataFrame with these columns
-    empty_df = pd.DataFrame(columns=column_names)
-    empty_df.head(0).to_sql(name=table, con=engine, if_exists='replace')
-    # Iterating over Parquet file in chunks
-    for df in parquet_file.iter_batches(batch_size=100000):
-        df = df.to_pandas()
-        df["tpep_pickup_datetime"] = pd.to_datetime(df["tpep_pickup_datetime"])
-        df["tpep_dropoff_datetime"] = pd.to_datetime(df["tpep_dropoff_datetime"])
-        df.to_sql(name=table, con=engine, if_exists='append')
+        # Extract and print column names
+        column_names = schema.names
+        # Create an empty DataFrame with these columns
+        empty_df = pd.DataFrame(columns=column_names)
+        empty_df.head(0).to_sql(name=table, con=connection, if_exists='replace')
+        # Iterating over Parquet file in chunks
+        i = 1
+        for df in parquet_file.iter_batches(batch_size=100000):
+            t_start = time()
+            df = df.to_pandas()
+            df["tpep_pickup_datetime"] = pd.to_datetime(df["tpep_pickup_datetime"])
+            df["tpep_dropoff_datetime"] = pd.to_datetime(df["tpep_dropoff_datetime"])
+            df.to_sql(name=table, con=connection, if_exists='append')
+            t_end = time()
+            print(f'Inserted Chunk {i}, time taken- {t_start-t_end}')
+            i+=1
         
-    
     print('Finished Ingesting data')
     
 

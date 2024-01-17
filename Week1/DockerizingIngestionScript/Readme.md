@@ -89,13 +89,20 @@ docker run -it \
 ## Python ingestion for dockerfile
 
 ```docker
-URL = 
+URL = "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2023-10.parquet"
 python upload_data.py \
 --user=root \
 --password=root \
 --host=localhost \
 --port=5432 \
---dbname=ny_taxi \
+--database=ny_taxi \
 --table=yellow_taxi_data \
---url=${URL} \
+--url="https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2023-10.parquet"
+
 ```
+
+- Reusing a already existed container
+
+```docker
+ docker start pg-database
+ ```
