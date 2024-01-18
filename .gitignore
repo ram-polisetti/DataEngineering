@@ -2,3 +2,4 @@
 Week1/IngestingNYTaxiToPostgres/Yellow Taxi 2019 Jan.csv
 ny_taxi_postgres_data/
 Week1/IngestingNYTaxiToPostgres/ny_taxi_postgres_data/
+Week1/DockerCompose/pgadmin_data/pgadmin4.db

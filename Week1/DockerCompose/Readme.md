@@ -35,10 +35,16 @@ services:
    environment:
     - PGADMIN_DEFAULT_EMAIL=admin@admin.com
     - PGADMIN_DEFAULT_PASSWORD=root
+   volumes:
+    - "./pgadmin_data:/var/lib/pgadmin"
    ports:
     - "8080:80"
 
 ```
+
+Change permissions to this folder 
+
+- "./pgadmin_data:/var/lib/pgadmin"
 
 - No need to specify the network interface. It will happen automatically.
 
