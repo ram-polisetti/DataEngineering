@@ -57,6 +57,20 @@ services:
    ports:
     - "8080:80"
 
+  
+  taxi_ingest:
+    image: taxi_ingest:v001
+    command:
+      - "--user=root"
+      - "--password=root"
+      - "--host=pg-database"
+      - "--port=5432"
+      - "--database=ny_taxi"
+      - "--table=yellow_taxi_data"
+      - "--url=https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2023-10.parquet"
+    depends_on:
+      - pg-database
+
 ```
 
 Change permissions to this folder 
