@@ -1,5 +1,7 @@
 # Docker Compose
 
+*** Change folder permissions to pgadmin_data and ny_taxi_postgresdata using `sudo chmod 777 folder_name` ***
+
 - By default Docker Compose comes preinstalled with Docker in mac and Windows.
 - It is used to specify one file for all the cofigurations for the containers as it is inconvinient to specify multiple files for each container.
   - All the configurations for the containers will be specified in one `YAML` file.
