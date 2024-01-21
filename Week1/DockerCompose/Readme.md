@@ -29,7 +29,9 @@ services:
       - "./ny_taxi_postgres_data:/var/lib/postgresql/data:rw"
     ports:
       - "5432:5432"
-  
+    networks:
+      - pg-network
+
   pg-admin:
    image: dpage/pgadmin4
    environment:
@@ -39,6 +41,12 @@ services:
     - "./pgadmin_data:/var/lib/pgadmin"
    ports:
     - "8080:80"
+   networks:
+      - pg-network
+   
+networks:
+  pg-network:
+    driver: bridge
 
 ```
 
@@ -59,6 +67,21 @@ docker-compose up -d
 ```
 
 ![Alt text](image.png)
+
+
+```bash
+docker run -it --network=dockercompose_pg-network taxi_ingest:v001 \
+--user=root \
+--password=root \
+--host=pg-database \
+--port=5432 \
+--database=ny_taxi \
+--table=yellow_taxi_data \
+--url="https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2023-10.parquet"
+
+```
+
+Here '--network=dockercompose_pg-network' is the name of the network created by docker-compose.
 
 Shutting down docker-compose
 
