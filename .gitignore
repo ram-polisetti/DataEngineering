@@ -1,7 +1,8 @@
 *csv
-Week1/IngestingNYTaxiToPostgres/Yellow Taxi 2019 Jan.csv
+2.IngestingNYTaxiToPostgres/Yellow Taxi 2019 Jan.csv
 ny_taxi_postgres_data/
-Week1/IngestingNYTaxiToPostgres/ny_taxi_postgres_data/
-Week1/DockerCompose/pgadmin_data/pgadmin4.db
-Week1/CompleteDockerCompose/pgadmin_data/pgadmin4.db
-Week1/Terraform/keys/my_creds.json
+2.IngestingNYTaxiToPostgres/ny_taxi_postgres_data/
+4.DockerCompose/pgadmin_data/pgadmin4.db
+5.CompleteDockerCompose/pgadmin_data/pgadmin4.db
+6.Terraform/keys/my_creds.json
+
