@@ -4,5 +4,5 @@ ny_taxi_postgres_data/
 2.IngestingNYTaxiToPostgres/ny_taxi_postgres_data/
 4.DockerCompose/pgadmin_data/pgadmin4.db
 5.CompleteDockerCompose/pgadmin_data/pgadmin4.db
-6.Terraform/keys/my_creds.json
+/workspaces/DataEngineering/6.Terraform/keys
 
