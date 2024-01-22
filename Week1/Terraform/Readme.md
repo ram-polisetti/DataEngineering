@@ -114,19 +114,19 @@ follow this [link](https://registry.terraform.io/providers/hashicorp/google/late
 then update the main.tf file
 
 ```terraform
-resource "google_storage_bucket" "auto-expire" {
-  name          = "auto-expiring-bucket"
+resource "google_storage_bucket" "demo-bucket" {
+  name          = "terraform-412018-bucket"
   location      = "US"
   force_destroy = true
 
-  lifecycle_rule {
-    condition {
-      age = 3
-    }
-    action {
-      type = "Delete"
-    }
-  }
+  # lifecycle_rule {
+  #   condition {
+  #     age = 3
+  #   }
+  #   action {
+  #     type = "Delete"
+  #   }
+  # }
 
   lifecycle_rule {
     condition {
@@ -139,4 +139,26 @@ resource "google_storage_bucket" "auto-expire" {
 }
 ```
 
+```bash
+terraform plan
+```
 
+![Alt text](image-2.png)
+
+```bash
+terraform apply
+```
+
+terrform apply will create the bucket in GCP and creates a state file in the local machine
+
+![Alt text](image-1.png)
+![Alt text](image-3.png)
+
+```bash
+terraform destroy
+```
+
+the resources will be deleted from GCP and resources from the state file will be deleted from the local machine and a backup file will be created.
+![Alt text](image-6.png)
+![Alt text](image-4.png)
+![Alt text](image-5.png)
