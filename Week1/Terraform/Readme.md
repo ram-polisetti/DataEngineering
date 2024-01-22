@@ -159,6 +159,7 @@ terraform destroy
 ```
 
 the resources will be deleted from GCP and resources from the state file will be deleted from the local machine and a backup file will be created.
+
 ![Alt text](image-6.png)
 ![Alt text](image-4.png)
 ![Alt text](image-5.png)
