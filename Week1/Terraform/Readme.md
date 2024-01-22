@@ -107,3 +107,36 @@ terraform init
 
 ![Alt text](image.png)
 
+Now create a bucket in GCP
+
+follow this [link](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket)
+
+then update the main.tf file
+
+```terraform
+resource "google_storage_bucket" "auto-expire" {
+  name          = "auto-expiring-bucket"
+  location      = "US"
+  force_destroy = true
+
+  lifecycle_rule {
+    condition {
+      age = 3
+    }
+    action {
+      type = "Delete"
+    }
+  }
+
+  lifecycle_rule {
+    condition {
+      age = 1
+    }
+    action {
+      type = "AbortIncompleteMultipartUpload"
+    }
+  }
+}
+```
+
+
