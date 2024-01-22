@@ -88,3 +88,22 @@ Use this command to format the code
 ```bash
  terraform fmt
 ```
+
+## Installing the google provider
+
+Use this [resource](https://cloud.google.com/sdk/docs/install#deb) for the installation of the google provider
+
+```bash
+gcloud init
+```
+
+```bash
+export GOOGLE_CREDENTIALS='/workspaces/DataEngineering/Week1/Terraform/keys/my_creds.json'
+```
+
+```bash
+terraform init
+```
+
+![Alt text](image.png)
+

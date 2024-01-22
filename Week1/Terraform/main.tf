@@ -9,6 +9,7 @@ terraform {
 
 provider "google" {
   # Configuration options
+  credentials = "./keys/my_creds.json"
   project = "terraform-412018"
   region  = "us-central1"
 }
