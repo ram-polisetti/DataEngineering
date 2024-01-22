@@ -10,13 +10,13 @@ terraform {
 provider "google" {
   # Configuration options
   # credentials = "./keys/my_creds.json"
-  project = "terraform-412018"
-  region  = "us-central1"
+  project = var.project_id
+  region  = var.location
 }
 
 resource "google_storage_bucket" "demo-bucket" {
-  name          = "terraform-412018-bucket"
-  location      = "US"
+  name          = var.gcs_bucket_name
+  location      = var.location
   force_destroy = true
 
   # lifecycle_rule {
@@ -39,5 +39,6 @@ resource "google_storage_bucket" "demo-bucket" {
 }
 
 resource "google_bigquery_dataset" "demo_dataset" {
-  dataset_id = "demo_dataset"
+  dataset_id = var.bq_dataset_name
+  location   = var.location
 }
