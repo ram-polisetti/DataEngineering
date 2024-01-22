@@ -1,4 +1,5 @@
 *csv
+*json
 2.IngestingNYTaxiToPostgres/Yellow Taxi 2019 Jan.csv
 ny_taxi_postgres_data/
 2.IngestingNYTaxiToPostgres/ny_taxi_postgres_data/
@@ -6,3 +7,5 @@ ny_taxi_postgres_data/
 5.CompleteDockerCompose/pgadmin_data/pgadmin4.db
 /workspaces/DataEngineering/6.Terraform/keys
 
+6.Terraform/keys/my_creds.json
+6.Terraform/keys/my_creds.json
