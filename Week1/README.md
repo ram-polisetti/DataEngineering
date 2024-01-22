@@ -1,1 +1,0 @@
-- Initializing PostgreSQL on Docker

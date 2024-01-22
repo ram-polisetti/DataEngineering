@@ -4,3 +4,4 @@ ny_taxi_postgres_data/
 Week1/IngestingNYTaxiToPostgres/ny_taxi_postgres_data/
 Week1/DockerCompose/pgadmin_data/pgadmin4.db
 Week1/CompleteDockerCompose/pgadmin_data/pgadmin4.db
+Week1/Terraform/keys/my_creds.json
