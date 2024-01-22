@@ -61,3 +61,30 @@ terraform -help plan
 ```
 
 These steps will help you install and verify Terraform on your system.
+
+Now visit [https://registry.terraform.io/providers/hashicorp/google/latest/docs](https://registry.terraform.io/providers/hashicorp/google/latest/docs) to learn more about the Google provider for Terraform.
+
+and copy the following
+
+```terraform
+terraform {
+    required_providers {
+        google = {
+        source = "hashicorp/google"
+        version = "5.13.0"
+        }
+    }
+}
+
+provider "google" {
+    # Configuration options
+    project     = "my-project-id"
+    region      = "us-central1"
+}
+```
+
+Use this command to format the code
+
+```bash
+ terraform fmt
+```
