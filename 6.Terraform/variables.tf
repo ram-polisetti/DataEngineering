@@ -1,3 +1,9 @@
+variable "credentials_file" {
+  description = "Path to the credentials file"
+  type        = string
+  default     = "./keys/my_creds.json"
+
+}
 variable "project_id" {
   description = "Project ID"
   type        = string

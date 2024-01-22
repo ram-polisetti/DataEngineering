@@ -9,9 +9,9 @@ terraform {
 
 provider "google" {
   # Configuration options
-  # credentials = "./keys/my_creds.json"
-  project = var.project_id
-  region  = var.location
+  credentials = var.credentials_file
+  project     = var.project_id
+  region      = var.location
 }
 
 resource "google_storage_bucket" "demo-bucket" {
