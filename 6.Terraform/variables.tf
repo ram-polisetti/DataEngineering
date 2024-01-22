@@ -1,4 +1,4 @@
-variable "credentials_file" {
+variable "credentials" {
   description = "Path to the credentials file"
   type        = string
   default     = "./keys/my_creds.json"
