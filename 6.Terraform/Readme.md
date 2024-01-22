@@ -98,7 +98,7 @@ gcloud init
 ```
 
 ```bash
-export GOOGLE_CREDENTIALS='/workspaces/DataEngineering/Week1/Terraform/keys/my_creds.json'
+export GOOGLE_CREDENTIALS='./keys/my_creds.json'
 ```
 
 ```bash
@@ -163,3 +163,17 @@ the resources will be deleted from GCP and resources from the state file will be
 ![Alt text](image-6.png)
 ![Alt text](image-4.png)
 ![Alt text](image-5.png)
+
+## google_bigquery_dataset
+
+make sure that you enabled BigQuery API in GCP before applying it in terraform
+
+```terraform
+resource "google_bigquery_dataset" "dataset" {
+  dataset_id                  = "example_dataset"
+  }
+```
+
+![Alt text](image-8.png)
+
+![Alt text](image-7.png)

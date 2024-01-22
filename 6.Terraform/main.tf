@@ -7,7 +7,7 @@ terraform {
   }
 }
 
-provider "google"{
+provider "google" {
   # Configuration options
   # credentials = "./keys/my_creds.json"
   project = "terraform-412018"
@@ -36,4 +36,8 @@ resource "google_storage_bucket" "demo-bucket" {
       type = "AbortIncompleteMultipartUpload"
     }
   }
+}
+
+resource "google_bigquery_dataset" "demo_dataset" {
+  dataset_id = "demo_dataset"
 }
