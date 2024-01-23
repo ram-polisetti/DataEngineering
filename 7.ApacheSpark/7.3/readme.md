@@ -36,3 +36,62 @@ done
 
 ![Alt text](image-1.png)
 ![Alt text](image-2.png)
+
+Yellow Taxi Schema
+
+```pyspark
+df_yellow.printSchema()
+
+root
+ |-- VendorID: long (nullable = true)
+ |-- tpep_pickup_datetime: timestamp_ntz (nullable = true)
+ |-- tpep_dropoff_datetime: timestamp_ntz (nullable = true)
+ |-- passenger_count: double (nullable = true)
+ |-- trip_distance: double (nullable = true)
+ |-- RatecodeID: double (nullable = true)
+ |-- store_and_fwd_flag: string (nullable = true)
+ |-- PULocationID: long (nullable = true)
+ |-- DOLocationID: long (nullable = true)
+ |-- payment_type: long (nullable = true)
+ |-- fare_amount: double (nullable = true)
+ |-- extra: double (nullable = true)
+ |-- mta_tax: double (nullable = true)
+ |-- tip_amount: double (nullable = true)
+ |-- tolls_amount: double (nullable = true)
+ |-- improvement_surcharge: double (nullable = true)
+ |-- total_amount: double (nullable = true)
+ |-- congestion_surcharge: double (nullable = true)
+ |-- airport_fee: integer (nullable = true)
+
+```
+
+Green Taxi Schema
+
+```pyspark
+df_green.printSchema()
+
+root
+ |-- VendorID: long (nullable = true)
+ |-- lpep_pickup_datetime: timestamp_ntz (nullable = true)
+ |-- lpep_dropoff_datetime: timestamp_ntz (nullable = true)
+ |-- store_and_fwd_flag: string (nullable = true)
+ |-- RatecodeID: double (nullable = true)
+ |-- PULocationID: long (nullable = true)
+ |-- DOLocationID: long (nullable = true)
+ |-- passenger_count: double (nullable = true)
+ |-- trip_distance: double (nullable = true)
+ |-- fare_amount: double (nullable = true)
+ |-- extra: double (nullable = true)
+ |-- mta_tax: double (nullable = true)
+ |-- tip_amount: double (nullable = true)
+ |-- tolls_amount: double (nullable = true)
+ |-- ehail_fee: integer (nullable = true)
+ |-- improvement_surcharge: double (nullable = true)
+ |-- total_amount: double (nullable = true)
+ |-- payment_type: double (nullable = true)
+ |-- trip_type: double (nullable = true)
+ |-- congestion_surcharge: double (nullable = true)
+
+```
+
+Schemas are alittle different, so we will need to do some data cleaning.
