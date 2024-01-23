@@ -124,3 +124,24 @@ For example, if we have a set like {'a', 'b', 'c'}, using * to unpack it would b
 
 So, when we use df_yellow.select(*common_columns), it's equivalent to passing each column name in common_columns as a separate argument to the select method. This is necessary because the select method expects each column name to be a separate argument.
 
+![Alt text](image.png)
+
+
+## Writing SQL Queries
+
+First we have to tell spark that our dataframes are tables
+
+```pyspark
+df_trips.createOrReplaceTempView("trips")
+```
+
+Then we can write SQL queries
+
+```pyspark
+spark.sql("""
+        SELECT source, COUNT(*) AS count
+        FROM trips
+        GROUP BY source
+""")
+```
+![Alt text](image-3.png)
