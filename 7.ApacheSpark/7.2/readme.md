@@ -97,11 +97,18 @@ The repartitioning step can help improve the performance of the write operation 
 ![Alt text](image.png)
 ![Alt text](image-1.png)
 
-## Actions Vs
+## Actions Vs Transformations
 
 - Actions: Actions are operations that trigger a computation and return a value. For example, the count() method is an action that returns the number of rows in the DataFrame. Actions are executed immediately.
 - Transformations: Transformations are operations that return a new DataFrame. For example, the filter() method is a transformation that returns a new DataFrame containing only the rows that match a given condition. Transformations are executed lazily. That is, Spark will not begin to execute transformations until it sees an action.
 - Actions trigger computations and return values. Transformations return new DataFrames.
 - Actions are executed immediately. Transformations are executed lazily. That is, Spark will not begin to execute transformations until it sees an action.
 
+```python
+df.select('pickup_datetime', 'dropoff_datetime', 'trip_miles', 'trip_time')\
+      .filter(df.hvfhs_license_num == 'HV0003')
+
+```
+
+this code block will not be executed until we call an action on the dataframe. For example, if we call the count() or show() method on the dataframe, then Spark will execute the code block above to compute the count.
 
