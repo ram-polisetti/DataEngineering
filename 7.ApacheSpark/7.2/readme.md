@@ -1,4 +1,7 @@
+# Apache Spark
+
 Unlike pandas, spark doesnt try to store the datatypes of the columns in the dataframe. It just stores the data as a binary format. So, when we read the data, we need to specify the schema of the data. This is done by using the StructType and StructField classes. The StructType class is used to define the schema of the dataframe. The StructField class is used to define the schema of each column of the dataframe. The StructField class takes in the following parameters:
+
 - name: The name of the column
 - dataType: The datatype of the column
 - nullable: Whether the column can contain null values or not
@@ -65,6 +68,7 @@ schema = types.StructType([
     types.StructField('access_a_ride_flag', types.StringType(), True),
     types.StructField('wav_request_flag', types.StringType(), True),
     types.StructField('wav_match_flag', types.StringType(), True)
+])
 ```
 
 ```python
@@ -78,11 +82,13 @@ data = spark.read\
 ```python
 data.repartition(25)
 ```
+
 Its called a lazy command, it doesnt trigger anything. It just tells spark that when you do something, do it with 25 partitions.
 
 ```python
 data.write.parquet('fhvhv/2023/10')
 ```
+
 When this line is executed, Spark will first repartition the DataFrame into 25 partitions as per command. Then, it will write the data into a Parquet file at the specified path ('fhvhv/2023/10').
 
 Parquet is a columnar storage file format that is optimized for use with big data processing frameworks like Apache Spark. The data is stored in a way that allows for efficient data compression and encoding schemes. The data can be read back efficiently as well.
@@ -90,4 +96,12 @@ Parquet is a columnar storage file format that is optimized for use with big dat
 The repartitioning step can help improve the performance of the write operation by distributing the data across multiple nodes in the Spark cluster, allowing the write operation to be performed in parallel.
 ![Alt text](image.png)
 ![Alt text](image-1.png)
+
+## Actions Vs
+
+- Actions: Actions are operations that trigger a computation and return a value. For example, the count() method is an action that returns the number of rows in the DataFrame. Actions are executed immediately.
+- Transformations: Transformations are operations that return a new DataFrame. For example, the filter() method is a transformation that returns a new DataFrame containing only the rows that match a given condition. Transformations are executed lazily. That is, Spark will not begin to execute transformations until it sees an action.
+- Actions trigger computations and return values. Transformations return new DataFrames.
+- Actions are executed immediately. Transformations are executed lazily. That is, Spark will not begin to execute transformations until it sees an action.
+
 
