@@ -75,3 +75,19 @@ data = spark.read\
 ```
 
 
+```python
+data.repartition(25)
+```
+Its called a lazy command, it doesnt trigger anything. It just tells spark that when you do something, do it with 25 partitions.
+
+```python
+data.write.parquet('fhvhv/2023/10')
+```
+When this line is executed, Spark will first repartition the DataFrame into 25 partitions as per command. Then, it will write the data into a Parquet file at the specified path ('fhvhv/2023/10').
+
+Parquet is a columnar storage file format that is optimized for use with big data processing frameworks like Apache Spark. The data is stored in a way that allows for efficient data compression and encoding schemes. The data can be read back efficiently as well.
+
+The repartitioning step can help improve the performance of the write operation by distributing the data across multiple nodes in the Spark cluster, allowing the write operation to be performed in parallel.
+![Alt text](image.png)
+![Alt text](image-1.png)
+
