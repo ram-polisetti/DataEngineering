@@ -94,4 +94,33 @@ root
 
 ```
 
-Schemas are alittle different, so we will need to do some data cleaning.
+Schemas are alittle different, so we will need to do some data cleaning
+
+after renaming the columns, we can union the two dataframes together but we have to identify from which dataframe the data came from
+
+using  pyspark.sql.functions, we can add a column to identify the data source
+
+```pyspark
+from pyspark.sql.functions import lit
+df_green = df_green.withColumn("source", lit("green"))
+```
+
+```pyspark
+# Get the common columns
+common_columns = set(df_yellow.columns) & set(df_green.columns)
+
+# Use the set to select the common columns from df_yellow
+df_yellow_common = df_yellow.select(*common_columns)
+
+# Use the set to select the common columns from df_green
+df_green_common = df_green.select(*common_columns)
+```
+
+The set(df_yellow.columns) & set(df_green.columns) expression actually returns a set, not a dictionary. A set in Python is a collection of unique elements, similar to a list or tuple, but it does not have any order and cannot contain duplicate elements.
+
+When we use the * operator before a collection in Python (like a list, tuple, or set), it "unpacks" the collection. This means it treats each element of the collection as a separate argument.
+
+For example, if we have a set like {'a', 'b', 'c'}, using * to unpack it would be equivalent to passing the arguments as 'a', 'b', 'c'.
+
+So, when we use df_yellow.select(*common_columns), it's equivalent to passing each column name in common_columns as a separate argument to the select method. This is necessary because the select method expects each column name to be a separate argument.
+
