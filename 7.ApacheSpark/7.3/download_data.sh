@@ -1,7 +1,7 @@
 set -e
 
 TAXI_TYPES=("yellow" "green")
-YEAR=2020
+YEAR=2021
 
 # https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2023-09.parquet
 # https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2023-09.parquet
