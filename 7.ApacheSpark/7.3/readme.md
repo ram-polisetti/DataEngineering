@@ -126,7 +126,6 @@ So, when we use df_yellow.select(*common_columns), it's equivalent to passing ea
 
 ![Alt text](image.png)
 
-
 ## Writing SQL Queries
 
 First we have to tell spark that our dataframes are tables
